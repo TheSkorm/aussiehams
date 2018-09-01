@@ -1,6 +1,6 @@
 import boto3
 
-SKILL_NAME = "Australian Call"
+SKILL_NAME = "Australian Ham"
 HELP_MESSAGE = "Australian callsign lookup from ACMA RADCOM database. For example you can ask - Who is Victor Kilo Three Foxtrot Uniform Charlie?  What callsign would you like to look up today?"
 HELP_REPROMPT = HELP_MESSAGE
 STOP_MESSAGE = "Goodbye!"
@@ -97,7 +97,6 @@ def get_lookup_response(slots):
         return response(speech_response_with_card(SKILL_NAME, speechOutput,
                                                           speechOutput, True))
     attrs['state'] = attrs['state'].replace("QLD", "Queensland")
-    
     attrs['state'] = attrs['state'].replace("NSW", "New South Whales")
     attrs['state'] = attrs['state'].replace("SA", "South Australia")
     attrs['state'] = attrs['state'].replace("VIC", "Victoria")
@@ -105,6 +104,7 @@ def get_lookup_response(slots):
     attrs['state'] = attrs['state'].replace("NT", "Northern Terrority")
     attrs['state'] = attrs['state'].replace("TAS", "Tasmania")
     attrs['state'] = attrs['state'].replace("ACT", "Australian Capitial Terrority")
+    attrs['state'] = attrs['state'].replace("NOR", "Norfolk Island")
     cardcontent = '{} is {}, an {} license holder whose postal address is {}, {}'.format(callsign.upper(), attrs['name'], attrs['type'], attrs['suburb'],attrs['state'])
     speechOutput = '{}. is {}, an {} license holder whose postal address is {}, {}'.format(prettyCall, attrs['name'], attrs['type'], attrs['suburb'],attrs['state'])
 
